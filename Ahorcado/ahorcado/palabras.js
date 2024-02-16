@@ -1,0 +1,1 @@
+const words = ['Emilio','Sistemas', 'Cesar','Ahorcado','SSH','Cifrado','Bandit','Trabajo','Router','Cisco','Pendrive','Big data','Ciberseguridad','Algoritmo','Programación','Seguridad','Framework','Encriptado','Cortafuegos','Antivirus'];

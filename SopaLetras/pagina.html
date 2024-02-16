@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Sopa de Letras</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+    </style>
+</head>
+<body>
+<div>
+    <table id="sopaDeLetras">
+        <div class="gradiente"></div>
+    </table>
+
+</div>
+<div>
+    <h1>SOPA DE LETRAS</h1>
+</div>
+<div class="contenido">
+    <label for="palabraInput">Introduce 4 palabra:</label>
+    <input type="text" id="palabraInput">
+    <button onclick="buscarPalabra()">Buscar</button>
+
+</div>
+<script>
+    // Palabras a incluir en la sopa de letras
+    const palabras = ["emilio", "seguridad", "nas", "ordenador"];
+
+    // Tamaño de la sopa de letras
+    const filas = 12;
+    const columnas = 12;
+
+    // Sopa de letras estática
+    const sopaDeLetras = [
+        ['h', 'x', 'u', 'u', 'g', 'f', 's', 'm', 'f', 't', 'c', 'k'],
+        ['y', 'k', 'r', 'b', 'j', 'l', 'e', 'r', 'u', 'b', 'o', 't'],
+        ['w', 'l', 'n', 'r', 'd', 'e', 'n', 'a', 'd', 'o', 'r', 'r'],
+        ['z', 'm', 'h', 'a', 'a', 'n', 'u', 'o', 's', 'i', 'd', 'h'],
+        ['c', 'n', 'x', 'l', 'm', 'a', 'o', 'r', 'd', 'e', 'e', 'o'],
+        ['d', 'l', 'l', 'k', 't', 's', 'v', 'w', 'x', 'y', 'n', 'a'],
+        ['z', 'i', 'e', 'm', 'i', 'l', 'i', 'o', 'r', 'k', 'a', 'k'],
+        ['w', 'y', 'o', 'a', 'r', 'd', 'e', 'n', 'a', 'd', 'd', 'r'],
+        ['o', 'o', 'q', 'l', 'c', 'j', 'k', 'i', 'l', 'z', 'o', 'm'],
+        ['q', 'r', 'e', 'u', 'l', 'c', 'l', 'm', 'u', 'o', 'r', 'o'],
+        ['f', 's', 'e', 'g', 'u', 'r', 'i', 'd', 'a', 'd', 'r', 's'],
+        ['d', 'f', 'g', 't', 'j', 'm', 't', 'y', 'z', 'a', 'f', 'g']
+    ];
+
+    // Crear la tabla HTML para la sopa de letras
+    const tabla = document.getElementById("sopaDeLetras");
+    for (let i = 0; i < filas; i++) {
+        const fila = document.createElement("tr");
+        for (let j = 0; j < columnas; j++) {
+            const celda = document.createElement("td");
+            celda.textContent = sopaDeLetras[i][j];
+            fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+    }
+
+    // Contador de palabras encontradas
+    let palabrasEncontradas = 0;
+
+    // Función para colocar una palabra en la sopa de letras
+    function colocarPalabra(sopaDeLetras, palabra) {
+        const direccion = Math.floor(Math.random() * 2); // 0 para horizontal, 1 para vertical
+
+        if (direccion === 0) {
+            // Colocar horizontalmente
+            const fila = Math.floor(Math.random() * filas);
+            const columna = Math.floor(Math.random() * (columnas - palabra.length + 1));
+
+            for (let i = 0; i < palabra.length; i++) {
+                sopaDeLetras[fila][columna + i] = palabra.charAt(i);
+            }
+        } else {
+            // Colocar verticalmente
+            const fila = Math.floor(Math.random() * (filas - palabra.length + 1));
+            const columna = Math.floor(Math.random() * columnas);
+
+            for (let i = 0; i < palabra.length; i++) {
+                sopaDeLetras[fila + i][columna] = palabra.charAt(i);
+            }
+        }
+    }
+    // Función para buscar la palabra ingresada por el usuario
+
+    function buscarPalabra() {
+        const palabraInput = document.getElementById("palabraInput").value.toLowerCase();
+
+        // Verificar si la palabra ingresada está en el array de palabras
+        if (palabras.includes(palabraInput)) {
+            // Verificar si la palabra está en la sopa de letras
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    if (sopaDeLetras[i][j] === palabraInput.charAt(0)) {
+                        if (buscarEnDireccion(sopaDeLetras, palabraInput, i, j, 0, 1) ||
+                            buscarEnDireccion(sopaDeLetras, palabraInput, i, j, 1, 0)) {
+                            resaltarPalabra(palabraInput);
+                            palabrasEncontradas++;
+                            if (palabrasEncontradas === 4) {
+                                alert("13");
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    function buscarEnDireccion(sopaDeLetras, palabra, fila, columna, deltaFila, deltaColumna) {
+        for (let i = 0; i < palabra.length; i++) {
+            const nuevaFila = fila + i * deltaFila;
+            const nuevaColumna = columna + i * deltaColumna;
+
+            if (nuevaFila < 0 || nuevaFila >= filas || nuevaColumna < 0 || nuevaColumna >= columnas ||
+                sopaDeLetras[nuevaFila][nuevaColumna] !== palabra.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // Función para resaltar la palabra correcta
+    function resaltarPalabra(palabra) {
+        const celdas = document.querySelectorAll("td");
+
+        for (const celda of celdas) {
+            if (celda.textContent === palabra.charAt(0)) {
+                if (resaltarEnDireccion(celdas, palabra, celda, 0, 1) ||
+                    resaltarEnDireccion(celdas, palabra, celda, 1, 0)) {
+                    return;
+                }
+            }
+        }
+    }
+
+    // Función para resaltar la palabra en una dirección específica
+    function resaltarEnDireccion(celdas, palabra, celdaInicial, deltaFila, deltaColumna) {
+        const filaInicial = celdaInicial.parentNode.rowIndex;
+        const columnaInicial = celdaInicial.cellIndex;
+
+        for (let i = 0; i < palabra.length; i++) {
+            const nuevaFila = filaInicial + i * deltaFila;
+            const nuevaColumna = columnaInicial + i * deltaColumna;
+
+            const celda = celdas[nuevaFila * columnas + nuevaColumna];
+            if (!celda || celda.textContent !== palabra.charAt(i)) {
+                return false;
+            }
+        }
+
+        for (let i = 0; i < palabra.length; i++) {
+            const nuevaFila = filaInicial + i * deltaFila;
+            const nuevaColumna = columnaInicial + i * deltaColumna;
+
+            const celda = celdas[nuevaFila * columnas + nuevaColumna];
+            if (palabra === "ordenador" || palabra === "nas") {
+                celda.style.backgroundImage = `url("tachon-girao.png")`;
+            } else {
+                celda.style.backgroundImage = `url("tachon.png")`;
+            }
+            celda.style.color = "#661107";
+        }
+
+        return true;
+    }
+</script>
+</body>
+</html>

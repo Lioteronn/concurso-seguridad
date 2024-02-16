@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yrsa&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+body {
+    background-color: rgb(254, 239, 220);
+}
+
+.password-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  max-width: 550px;
+  padding: 80px 10px 10px 10px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.password-title {
+    font-family: Cardo, serif;
+    font-size: 2.2em;
+}
+
+.password-subtitle { 
+    font-family: Yrsa, serif;
+    font-size: 1.3em;
+    height: 30px;
+    line-height: 30px;
+}
+
+.password-input {
+    border: 1px solid rgb(153, 153, 153);
+    height: 65px;
+    border-radius: 10px;
+    padding: 0 20px 0 20px;
+    font-size: 1.5em;
+    font-family: "Work Sans", sans-serif;
+}
+
+.rule-correct {
+    font-family: "Work Sans", sans-serif;
+    margin-top: 20px;
+    border: 1px solid rgb(141, 254, 66);
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgb(104, 254, 66);
+    width: 100%;
+    overflow: hidden;
+}
+
+.rule-correct h1 {
+    display: block;
+    background-color: rgb(210, 255, 195);
+    padding: 10px 20px 10px 20px;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.rule-correct h2 {
+    display: block;
+    background-color: rgb(232, 254, 229);
+    padding: 10px 20px 10px 20px;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.rule-incorrect {
+    font-family: "Work Sans", sans-serif;
+    margin-top: 20px;
+    border: 1px solid rgb(254, 66, 66);
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgb(254, 66, 66);
+    width: 100%;
+    overflow: hidden;
+}
+
+.rule-incorrect h1 {
+    display: block;
+    background-color: rgb(255, 195, 195);
+    padding: 10px 20px 10px 20px;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.rule-incorrect h2 {
+    display: block;
+    background-color: rgb(254, 229, 229);
+    padding: 10px 20px 10px 20px;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.rule {
+    opacity: 0;
+    scale: 0;
+}
+
+.rule-animation {
+    opacity: 1;
+    scale: 1;
+    transition: all 0.5s ease-in-out;
+}
+

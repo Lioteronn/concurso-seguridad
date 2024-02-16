@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autenticación</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css.map">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="css/bootstrap.rtl.css.map">
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css.map">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-grid.rtl.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.rtl.css.map">
+    <link rel="stylesheet" href="css/bootstrap-grid.rtl.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.rtl.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css.map">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css.map">
+    <link rel="stylesheet" href="css/bootstrap-reboot.rtl.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.rtl.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="css/bootstrap-utilities.css.map">
+    <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" href="css/bootstrap-utilities.min.css.map">
+    <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .custom-width {
+            width: 500px;
+        }
+        .custom-height{
+            height: 45vh;
+        }
+        .estilo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes zoom-in {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Aplica la animación de zoom-in a la clase caja */
+        .caja {
+            animation: zoom-in 0.5s ease-in-out;
+            background-color: white; /* Fondo blanco */
+            color: black; /* Texto negro */
+        }
+
+        /* Estilo para la imagen */
+        .imagen-enlace {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 12px;
+        }
+        body {
+            background-color: #4a4063;
+
+        }
+    </style>
+</head>
+<body>
+<div class="estilo d-flex justify-content-center align-items-center">
+    <div class="caja border border-primary rounded p-3 custom-width custom-height">
+        <!-- Imagen enlace -->
+
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <div class="form-group mt-2 mb-2">
+                <label for="correo">Introduce tu usuario:</label>
+                <input class="form-control border" type="email" id="correo" placeholder="Admin">
+            </div>
+            <div class="form-group mb-2">
+                <label for="contraseña">Introduce tu contraseña:</label>
+                <input class="form-control border" type="password" id="contraseña">
+            </div>
+            <div class="d-grid align-items-center">
+                <button onclick="validarCredenciales()" class="btn btn-primary mt-3" >Submit</button>
+                <a class="alert" href="concurso-seguridad/index.html">¡¡Obten la contraseña!! </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validarCredenciales() {
+        // Obtener los valores de usuario y contraseña
+        var usuario = document.getElementById("correo").value;
+        var contraseña = document.getElementById("contraseña").value;
+
+        // Verificar si el usuario y la contraseña son válidos
+        if (usuario === "Admin" && contraseña === "SamsungNAT1011IVDAM@") {
+            alert("¡Acceso concedido!");
+            // Redirigir a otra página
+            window.location.href = "puertas/puertas.html";
+        } else {
+            alert("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
+        }
+    }
+</script>
+
+</body>
+</html>

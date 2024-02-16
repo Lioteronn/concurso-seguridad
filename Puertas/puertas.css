@@ -1,0 +1,64 @@
+html, body {
+  height: 80%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url('./imagenes/padredladrillo.png');
+  background-size: 120% 160%;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  color: white;
+}
+
+.doors-container {
+  margin-top: 68px; /* Ajusta este valor según tus necesidades */
+  
+}
+
+.door {
+  display: inline-flex;
+  margin: 20px;
+  width: 200px;
+  height: 500px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.door:hover {
+  transform: scale(1.1);
+}
+
+.timer-container {
+  margin-top: 20px;
+
+}
+
+.timer {
+  font-size: 24px;
+  color: white;
+  background-color: black;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.animate {
+  animation: doorAnimation 0.5s ease-in-out;
+}
+
+@keyframes doorAnimation {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}

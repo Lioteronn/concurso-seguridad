@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Información</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function actualizarContraseña() {
+            // Obtener el valor del campo de usuario
+            var usuario = document.getElementById("usuario").value;
+
+            // Verificar si el campo de usuario no está vacío
+            if (usuario.trim() !== "") {
+                // Actualizar dinámicamente el campo de contraseña con "practica"
+                document.getElementById("contraseña").value = "practica";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Página de Información</h1>
+        <div class="grid">
+            <div class="box">
+                <h2>SSH: Conectarse desde Windows a Linux</h2>
+                <p class="text">SSH (Secure Shell) es un protocolo de red que permite a los usuarios conectarse de forma segura a un servidor remoto. Para conectarte desde Windows a un servidor Linux utilizando SSH, puedes usar herramientas como PuTTY o Windows PowerShell. Necesitarás la dirección IP del servidor, el nombre de usuario: "trabajo" y la contraseña para iniciar sesión.</p>
+            </div>
+            <div class="box">
+                <h2>Tipos de cifrado</h2>
+                <p class="text">Existen varios tipos de cifrado utilizados en criptografía, incluyendo el cifrado simétrico y asimétrico. Algunos métodos populares incluyen AES (Advanced Encryption Standard), RSA (Rivest-Shamir-Adleman) y el Cifrado del César. El Cifrado del César es un método de cifrado por sustitución en el que cada letra del texto original se desplaza un número fijo de posiciones en el alfabeto.</p>
+            </div>
+            <div class="box">
+                <h2>Cómo desencriptar un archivo</h2>
+                <p class="text">Para desencriptar un archivo utilizando una clave almacenada en un archivo de texto, puedes seguir varios pasos. Primero, necesitarás el archivo cifrado y el archivo de texto cuyo contenido será la contraseña. Luego, puedes usar un programa de desencriptación que utilice dicho archivo .txt para desencriptar el archivo cifrado.</p>
+            </div>
+        </div>
+        <a href="../ahorcado/index%20ahorcado.html" class="button">Comenzar</a>
+    </div>
+
+</body>
+
+</html>
